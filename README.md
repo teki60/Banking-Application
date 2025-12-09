@@ -1,18 +1,133 @@
-# Simple Bank Website Repository
-<p>Welcome to the GitHub repository for the Simple Bank website! This project showcases a basic banking website with
-	essential features for managing user accounts and transactions. The website offers a user-friendly interface
-	that allows users to create accounts, deposit and withdraw funds, and view transaction histories.</p>
-<h3>Key Features:</h3>
-<ul>
-	<li>User-friendly interface for account management</li>
-	<li>Secure user authentication and account creation</li>
-	<li>Convenient fund deposit and withdrawal functionality</li>
-	<li>Transaction history display for easy tracking</li>
-	<li>Minimalistic design for smooth navigation</li>
-</ul>
-<p>Feel free to explore the codebase, suggest improvements, or contribute to enhance the functionality and design of
-	the Simple Bank website. Your feedback and contributions are highly valued as we strive to make this project
-	even more user-friendly and secure.</p>
-<p>Visit the live website: <a href="https://sazidulalam47.github.io/simple-bank/">Simple Bank</a></p>
-<p>To get involved, simply fork the repository, make your changes, and submit a pull request. Let's collaborate to
-	create an even better banking experience!</p>
+# 🏦 Banking App Backend (Spring Boot)
+
+This is a simple **banking-style backend application** built with **Java Spring Boot**, designed to support a frontend that allows users to:
+
+* Register & Login
+* View balance
+* Deposit money
+* Withdraw money
+* View transaction history
+
+This project will gradually evolve from **basic CRUD** into a **secure and scalable** enterprise-style backend.
+
+---
+
+## 🚀 Tech Stack
+
+| Technology      | Purpose                  |
+| --------------- | ------------------------ |
+| Java 17+        | Backend Language         |
+| Spring Boot     | Main framework           |
+| Spring Web      | REST API                 |
+| Spring Data JPA | Database access layer    |
+| MySQL           | Database                 |
+| Lombok          | Reduces boilerplate code |
+
+---
+
+## 📌 Features (Current Phase)
+
+✔ User Registration
+✔ Login & Validation
+✔ Account for each user
+✔ Deposit & Withdraw operations
+✔ Track all transactions
+✔ REST API endpoints for frontend integration
+
+---
+
+## 🗂️ Project Structure (Layered Architecture)
+
+```
+src/
+ └─ main/
+     ├─ java/
+     │   └─ com.banking
+     │        ├─ controller       # REST APIs
+     │        ├─ service          # Business logic
+     │        ├─ repository       # DB queries (Spring JPA)
+     │        ├─ entity           # DB models
+     │        └─ dto              # Request/Response models
+     └─ resources/
+         └─ application.properties
+```
+
+---
+
+## 🛠️ API Endpoints (Phase 1 - Basic)
+
+| Method | Endpoint                 | Description                 |
+| ------ | ------------------------ | --------------------------- |
+| POST   | `/register`              | Create a new user + account |
+| POST   | `/login`                 | Validate user               |
+| GET    | `/balance/{userId}`      | Fetch current balance       |
+| POST   | `/deposit`               | Add deposit amount          |
+| POST   | `/withdraw`              | Withdraw amount if possible |
+| GET    | `/transactions/{userId}` | View full history           |
+
+---
+
+## 🗄 Database Design
+
+### User Table
+
+| Field     | Type      | Description        |
+| --------- | --------- | ------------------ |
+| id        | PK        | Unique user ID     |
+| username  | String    | Login name         |
+| password  | String    | Encrypted password |
+| createdAt | Timestamp | Registration date  |
+
+### Account Table
+
+| Field   | Type   | Description               |
+| ------- | ------ | ------------------------- |
+| id      | PK     | Account ID                |
+| user_id | FK     | Linked user               |
+| balance | Double | Current available balance |
+
+### Transaction Table
+
+| Field      | Type      | Description               |
+| ---------- | --------- | ------------------------- |
+| id         | PK        | Transaction ID            |
+| account_id | FK        | Linked account            |
+| type       | Enum      | DEPOSIT / WITHDRAW        |
+| amount     | Double    | Transaction amount        |
+| timestamp  | Timestamp | When transaction happened |
+
+---
+
+## ▶️ How to Run the App
+
+1️⃣ Configure DB connection in `application.properties`
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/banking_app
+spring.datasource.username=root
+spring.datasource.password=YOUR_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+```
+
+2️⃣ Run MySQL Server
+3️⃣ Start Spring Boot Application (`BankingAppBackendApplication.java`)
+4️⃣ Test APIs using Postman / Frontend
+
+---
+
+## 🎯 Future Enhancements (Learning Roadmap)
+
+| Phase   | What Gets Added                 | Skills Learned                   |
+| ------- | ------------------------------- | -------------------------------- |
+| Phase 2 | JWT Security, Role-based access | Spring Security + Authentication |
+| Phase 3 | Microservices & Messaging       | Kafka, API Gateway, Docker       |
+| Phase 4 | Cloud Deployment                | AWS / Azure / CI-CD              |
+
+---
+
+## 🤝 Contribution
+
+This project is for building backend skills step-by-step.
+You can extend and improve along the journey!
+
+---
