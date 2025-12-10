@@ -2,11 +2,13 @@ package com.example.banking_app_backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "accounts")
