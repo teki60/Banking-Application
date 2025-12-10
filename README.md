@@ -107,11 +107,11 @@ spring.datasource.url=jdbc:mysql://localhost:3306/banking_app
 spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
 spring.jpa.hibernate.ddl-auto=update
-```
+```  
 
-2️⃣ Run MySQL Server
-3️⃣ Start Spring Boot Application (`BankingAppBackendApplication.java`)
-4️⃣ Test APIs using Postman / Frontend
+2️⃣ Run MySQL Server  
+3️⃣ Start Spring Boot Application (`BankingAppBackendApplication.java`)  
+4️⃣ Test APIs using Postman / Frontend  
 
 ---
 
