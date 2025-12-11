@@ -1,9 +1,9 @@
 package com.example.banking_app_backend.controller;
 
-import com.example.banking_app_backend.dto.login.LoginRequest;
-import com.example.banking_app_backend.dto.login.LoginResponse;
-import com.example.banking_app_backend.dto.register.RegisterRequest;
-import com.example.banking_app_backend.dto.register.RegisterResponse;
+import com.example.banking_app_backend.dto.auth.LoginRequest;
+import com.example.banking_app_backend.dto.auth.LoginResponse;
+import com.example.banking_app_backend.dto.auth.RegisterRequest;
+import com.example.banking_app_backend.dto.auth.RegisterResponse;
 import com.example.banking_app_backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.example.banking_app_backend.dto.login;
+package com.example.banking_app_backend.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
