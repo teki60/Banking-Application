@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,9 +60,16 @@ public class AccountServiceImpl implements AccountService{
         saveTransaction(account, Type.WITHDRAW, amount);
     }
 
-    private Account getAccountByUserId(Long userId){
+    public Account getAccountByUserId(Long userId){
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Invalid User"));
         return accountRepository.findByUser(user).orElseThrow(()->new RuntimeException("Account does not exist"));
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByUserId(Long userId) {
+        Account account = getAccountByUserId(userId);
+        Long accountId = account.getId();
+        return transactionRepository.findByAccountId(accountId);
     }
 
     private void saveTransaction(Account account, Type type, double amount){

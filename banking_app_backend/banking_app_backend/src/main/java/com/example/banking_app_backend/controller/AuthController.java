@@ -22,6 +22,8 @@ public class AuthController {
     public RegisterResponse registerUser(@RequestBody RegisterRequest registerRequest){
         authService.register(registerRequest.getUserName(), registerRequest.getPassword());
         RegisterResponse registerResponse = new RegisterResponse();
+        registerResponse.setResult(true);
+        registerResponse.setMessage("Successfully registered");
         return registerResponse;
     }
 

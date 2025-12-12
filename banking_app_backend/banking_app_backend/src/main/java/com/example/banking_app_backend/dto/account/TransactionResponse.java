@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TransactionResponse {
 
-    private Long userId;
+    private Long id;
 
     private Type type;
 
