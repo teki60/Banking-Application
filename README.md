@@ -2,15 +2,15 @@
 
 A **production-style** Banking Backend built with **Java Spring Boot**, featuring:
 
-* Secure user registration & login
-* Account creation for each user
-* Deposit & withdrawal operations
-* Transaction history
-* Clean layered architecture
-* MySQL persistence
-* **AI-powered Financial Insights** *(Phase 2)*
-* **AI Transaction Explanation** *(Phase 2)*
-* **AI Fraud Detection** *(Phase 2)*
+- Secure user registration & login
+- Account creation for each user
+- Deposit & withdrawal operations
+- Transaction history
+- Clean layered architecture
+- MySQL persistence
+- **AI-powered Financial Insights** _(Phase 2)_
+- **AI Transaction Explanation** _(Phase 2)_
+- **AI Fraud Detection** _(Phase 2)_
 
 This project is built step-by-step to learn **enterprise backend**, **microservices**, and **AI integration**.
 
@@ -270,5 +270,3 @@ Then add:
 
 This project is built step-by-step as a learning journey into **professional backend development + AI engineering**.
 Enhance it, extend it, and continue improving every phase.
-
----
