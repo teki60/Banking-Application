@@ -1,5 +1,3 @@
----
-
 # 🏦 Banking App Backend (Spring Boot + AI Integration)
 
 A **production-style** Banking Backend built with **Java Spring Boot**, featuring:
