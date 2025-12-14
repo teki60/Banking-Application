@@ -1,4 +1,4 @@
-package com.example.banking_app_backend.service;
+package com.example.banking_app_backend.service.impl;
 
 import com.example.banking_app_backend.constant.Type;
 import com.example.banking_app_backend.entity.Account;
@@ -7,16 +7,16 @@ import com.example.banking_app_backend.entity.User;
 import com.example.banking_app_backend.repository.AccountRepository;
 import com.example.banking_app_backend.repository.TransactionRepository;
 import com.example.banking_app_backend.repository.UserRepository;
+import com.example.banking_app_backend.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 
     private final UserRepository userRepository;
 

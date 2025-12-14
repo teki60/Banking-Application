@@ -1,9 +1,10 @@
-package com.example.banking_app_backend.service;
+package com.example.banking_app_backend.service.impl;
 
 import com.example.banking_app_backend.entity.Account;
 import com.example.banking_app_backend.entity.User;
 import com.example.banking_app_backend.repository.AccountRepository;
 import com.example.banking_app_backend.repository.UserRepository;
+import com.example.banking_app_backend.service.AuthService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
 
