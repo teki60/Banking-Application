@@ -16,4 +16,6 @@ public interface AccountService {
     Account getAccountByUserId(Long userId);
 
     List<Transaction> getTransactionsByUserId(Long userId);
+
+    List<Transaction> getLastNTransactions(Long userId, int n);
 }

@@ -72,6 +72,11 @@ public class AccountServiceImpl implements AccountService {
         return transactionRepository.findByAccountId(accountId);
     }
 
+    @Override
+    public List<Transaction> getLastNTransactions(Long userId, int n) {
+        return null;
+    }
+
     private void saveTransaction(Account account, Type type, double amount){
         Transaction transaction = new Transaction();
         transaction.setAccount(account);
