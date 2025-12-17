@@ -9,6 +9,9 @@ import com.example.banking_app_backend.repository.TransactionRepository;
 import com.example.banking_app_backend.repository.UserRepository;
 import com.example.banking_app_backend.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -74,7 +77,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<Transaction> getLastNTransactions(Long userId, int n) {
-        return null;
+
+        Pageable pageable = PageRequest.of(0,n, Sort.by("timeStamp").descending());
+        Account account = getAccountByUserId(userId);
+        Long accountId = account.getId();
+
+        return transactionRepository.findByAccountIdOrderByTimeStampDesc(accountId,pageable);
     }
 
     private void saveTransaction(Account account, Type type, double amount){

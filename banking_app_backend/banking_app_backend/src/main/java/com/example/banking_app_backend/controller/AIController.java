@@ -1,9 +1,7 @@
 package com.example.banking_app_backend.controller;
 
 import com.example.banking_app_backend.dto.ai.AIResponse;
-import com.example.banking_app_backend.repository.TransactionRepository;
 import com.example.banking_app_backend.service.AIService;
-import com.example.banking_app_backend.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
