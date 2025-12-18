@@ -23,11 +23,12 @@
 
     <repositories>
         <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/release</url>
         </repository>
     </repositories>
+
 
 
     <!-- Spring AI BOM -->
@@ -42,6 +43,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <dependencies>
 
@@ -74,7 +76,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Spring AI -->
@@ -82,6 +84,8 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-model-openai</artifactId>
         </dependency>
+
+
 
         <!-- Test -->
         <dependency>

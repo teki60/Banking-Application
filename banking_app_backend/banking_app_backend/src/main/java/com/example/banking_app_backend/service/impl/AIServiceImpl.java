@@ -5,11 +5,13 @@ import com.example.banking_app_backend.entity.Transaction;
 import com.example.banking_app_backend.service.AIService;
 import com.example.banking_app_backend.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AIServiceImpl implements AIService {
@@ -63,9 +65,27 @@ public class AIServiceImpl implements AIService {
                 "\n" +
                 "Do not include any additional text outside the JSON response.";
 
-        String aiResponseText = chatClient.prompt(prompt).call().content();
-        System.out.println(aiResponseText);
+        String aiResponseText = chatClient.prompt()
+                .system("You are a helpful financial assistant.")
+                .user(prompt)
+                .call()
+                .content();
 
-        return null;
+
+//        var response = chatClient.prompt()
+//                .user(prompt)
+//                .call();
+//
+//        System.out.println("RAW RESPONSE = " + response);
+
+
+        log.info("AI RAW RESPONSE: {}", aiResponseText);
+//
+        AIResponse response = new AIResponse();
+        response.setUserId(userId);
+        response.setTransactionCount(transactionCount);
+        response.setExplanation(aiResponseText);
+
+        return response;
     }
 }
