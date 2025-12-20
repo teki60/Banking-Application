@@ -1,5 +1,6 @@
 package com.example.banking_app_backend.repository;
 
+import com.example.banking_app_backend.constant.Type;
 import com.example.banking_app_backend.entity.Transaction;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +13,6 @@ public interface TransactionRepository extends JpaRepository<Transaction,Long> {
     List<Transaction> findByAccountIdOrderByTimeStampDesc(Long accountId);
 
     List<Transaction> findByAccountIdOrderByTimeStampDesc(Long accountId, Pageable pageable);
+
+    List<Transaction> findByAccountIdAndType(Long accountId, Type type);
 }

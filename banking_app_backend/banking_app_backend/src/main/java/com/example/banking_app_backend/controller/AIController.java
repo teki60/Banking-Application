@@ -21,12 +21,16 @@ public class AIController {
     return aiService.explainTransactions(userId,n);
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return chatClient.prompt()
-                .user("Say hello in one sentence")
-                .call()
-                .content();
+    @GetMapping("/smart-insights/{userId}")
+    public AIResponse smartInsights(@PathVariable Long userId, @RequestParam int n) throws JsonProcessingException{
+        return aiService.getSmartInsights(userId, n);
+    }
+
+    @GetMapping("/check-fraud/{userId}")
+    public AIResponse checkFraud(@PathVariable Long userId, @RequestParam int n){
+        return aiService.checkFraudRisk(userId,n);
+
+
     }
 
 

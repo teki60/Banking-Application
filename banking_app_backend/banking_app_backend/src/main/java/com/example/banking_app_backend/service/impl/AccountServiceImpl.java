@@ -85,6 +85,71 @@ public class AccountServiceImpl implements AccountService {
         return transactionRepository.findByAccountIdOrderByTimeStampDesc(accountId,pageable);
     }
 
+    @Override
+    public int getTransactionFrequency(Long userId) {
+
+        Account account = getAccountByUserId(userId);
+        Long accountId = account.getId();
+
+        List<Transaction> transactionList= transactionRepository.findByAccountId(accountId);
+        if(transactionList.isEmpty()){
+            return 0;
+        }
+        return transactionList.size();
+    }
+
+    @Override
+    public double getAverageWithdrawal(Long userId) {
+        Account account = getAccountByUserId(userId);
+        Long accountId = account.getId();
+
+        List<Transaction> transactionList= transactionRepository.findByAccountIdAndType(accountId,Type.WITHDRAW);
+        if(transactionList.isEmpty()){
+            return 0;
+        }
+        int size = transactionList.size();
+        double averageWithdrawalBalance=0;
+        for(Transaction transaction:transactionList){
+            averageWithdrawalBalance+=transaction.getAmount();
+        }
+        return averageWithdrawalBalance/size;
+    }
+
+    @Override
+    public double getMaxWithdrawal(Long userId, int n) {
+        List<Transaction> transactionList = getLastNTransactions(userId,n);
+        double maxWithdrawal = 0;
+
+        for(Transaction transaction:transactionList){
+            if(transaction.getType() == Type.WITHDRAW && transaction.getAmount()>maxWithdrawal){
+                maxWithdrawal = transaction.getAmount();
+            }
+        }
+
+        return maxWithdrawal;
+    }
+
+    @Override
+    public int getLateNightTransactionCount(Long userId) {
+
+        Account account = getAccountByUserId(userId);
+        Long accountId = account.getId();
+
+        List<Transaction> transactions = transactionRepository.findByAccountId(accountId);
+
+        int lateNightCount = 0;
+
+        for (Transaction tx : transactions) {
+            int hour = tx.getTimeStamp().getHour();
+
+            if (hour >= 0 && hour < 5) {
+                lateNightCount++;
+            }
+        }
+        return lateNightCount;
+    }
+
+
     private void saveTransaction(Account account, Type type, double amount){
         Transaction transaction = new Transaction();
         transaction.setAccount(account);

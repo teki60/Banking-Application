@@ -18,4 +18,12 @@ public interface AccountService {
     List<Transaction> getTransactionsByUserId(Long userId);
 
     List<Transaction> getLastNTransactions(Long userId, int n);
+
+    int getTransactionFrequency(Long userId);
+
+    double getAverageWithdrawal(Long userId);
+
+    double getMaxWithdrawal(Long userId, int n);
+
+    int getLateNightTransactionCount(Long userId);
 }

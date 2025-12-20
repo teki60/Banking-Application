@@ -7,4 +7,8 @@ public interface AIService {
 
     AIResponse explainTransactions(Long userId, int transactionCount) throws JsonProcessingException;
 
+    AIResponse getSmartInsights(Long userId, int transactionCount);
+
+    AIResponse checkFraudRisk(Long userId, int transactionCount);
+
 }
