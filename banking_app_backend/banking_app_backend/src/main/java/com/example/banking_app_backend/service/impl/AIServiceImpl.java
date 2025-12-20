@@ -1,9 +1,12 @@
 package com.example.banking_app_backend.service.impl;
 
+import com.example.banking_app_backend.dto.ai.AIExplanation;
 import com.example.banking_app_backend.dto.ai.AIResponse;
 import com.example.banking_app_backend.entity.Transaction;
 import com.example.banking_app_backend.service.AIService;
 import com.example.banking_app_backend.service.AccountService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -18,6 +21,7 @@ public class AIServiceImpl implements AIService {
 
     private final AccountService accountService;
     private final ChatClient chatClient;
+    private final ObjectMapper objectMapper;
 
     @Override
     public AIResponse explainTransactions(Long userId, int transactionCount) {
@@ -71,20 +75,20 @@ public class AIServiceImpl implements AIService {
                 .call()
                 .content();
 
+        log.info("\nAI RAW RESPONSE: {}", aiResponseText);
 
-//        var response = chatClient.prompt()
-//                .user(prompt)
-//                .call();
-//
-//        System.out.println("RAW RESPONSE = " + response);
-
-
-        log.info("AI RAW RESPONSE: {}", aiResponseText);
-//
         AIResponse response = new AIResponse();
         response.setUserId(userId);
         response.setTransactionCount(transactionCount);
-        response.setExplanation(aiResponseText);
+        AIExplanation aiExplanation = new AIExplanation();
+        try {
+            aiExplanation = objectMapper.readValue(aiResponseText, AIExplanation.class);
+        } catch (JsonProcessingException e) {
+            aiExplanation.setSummary("We’re unable to generate summary right now");
+            aiExplanation.setInsight("We’re unable to generate insights right now");
+
+        }
+        response.setExplanation(aiExplanation);
 
         return response;
     }

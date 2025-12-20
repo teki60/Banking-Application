@@ -13,6 +13,6 @@ public class AIResponse {
 
     private int transactionCount;
 
-    private String explanation;
+    private AIExplanation explanation;
 
 }

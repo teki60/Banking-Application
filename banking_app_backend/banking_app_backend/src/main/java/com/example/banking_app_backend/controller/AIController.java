@@ -2,6 +2,7 @@ package com.example.banking_app_backend.controller;
 
 import com.example.banking_app_backend.dto.ai.AIResponse;
 import com.example.banking_app_backend.service.AIService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class AIController {
     private final ChatClient chatClient;
 
     @GetMapping("/explain-transactions/{userId}")
-    public AIResponse explainTransactions(@PathVariable Long userId, @RequestParam int n){
+    public AIResponse explainTransactions(@PathVariable Long userId, @RequestParam int n) throws JsonProcessingException {
     return aiService.explainTransactions(userId,n);
     }
 
