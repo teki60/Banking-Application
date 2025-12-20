@@ -60,37 +60,86 @@ This project is built step-by-step to learn **enterprise backend**, **microservi
 
 ---
 
-# 🤖 Phase 2 – AI Features (COMING NEXT)
+# 🤖 ## 🤖 Phase 2 – AI Features (COMPLETED)
 
-Your backend will integrate **Spring AI** + **Groq models** to provide:
+Your backend integrates **Spring AI + Groq LLM** to provide AI-driven financial guidance to users.
 
-### 1️⃣ AI Transaction Explanation
+These features use:
 
-LLM analyzes user’s recent transactions and generates a natural-language explanation.
+- User transaction data  
+- Account balance  
+- Spending patterns  
+- Time-based behavior  
 
-Example:
+to generate **human-like explanations and advice**.
 
+---
+
+### 1️⃣ AI Transaction Explanation ✅
+
+LLM analyzes the user’s **last N transactions** and explains what happened.
+
+**Input to AI**
+- Last N transactions  
+- Current balance  
+
+**What it explains**
+- How the balance changed  
+- Deposits vs withdrawals  
+- Recent transaction behavior  
+
+**Example**
 > “You deposited ₹5000 and withdrew ₹1000 twice. Your balance increased due to consistent deposits.”
 
 ---
 
-### 2️⃣ AI Smart Financial Insights
+### 2️⃣ AI Smart Financial Insights ✅
 
-LLM generates personalized suggestions based on user activity.
+LLM acts like a **financial advisor** and gives suggestions on how the user can save money.
 
-Example:
+**Input to AI**
+- Last N transactions  
+- Current balance  
+- Transaction frequency  
+- Average withdrawal amount  
 
-> “Your withdrawal frequency increased this week. Consider reducing small impulse transactions.”
+**What it provides**
+- Spending habit analysis  
+- Overspending identification  
+- Suggestions to save money  
+- Motivational and friendly advice  
+
+**Example**
+> “You tend to withdraw money frequently. Reducing small withdrawals could help you control spending and save more over time.”
 
 ---
 
-### 3️⃣ AI Fraud & Risk Detection
+### 3️⃣ AI Fraud & Risk Awareness Detection ✅
 
-LLM evaluates transactions for unusual or risky patterns.
+This feature **does NOT block transactions** and **does NOT label fraud**.
 
-Example:
+It only provides **risk awareness** to the user.
 
-> “Withdrawal of ₹20,000 at 2 AM seems suspicious. Risk Score: 7/10.”
+**Input to AI**
+- Last N transactions  
+- Balance  
+- Transaction frequency  
+- Average & maximum withdrawal  
+- Late-night transaction count  
+
+**What it checks**
+- Unusually large withdrawals  
+- Late-night transaction patterns  
+- Sudden behavior changes  
+
+**Behavior**
+- Calm  
+- Reassuring  
+- Non-alarming  
+- Advisory only  
+
+**Example**
+> “Two withdrawals happened late at night. If these are unfamiliar, consider reviewing them or contacting support.”
 
 ---
 
@@ -106,7 +155,7 @@ src/
      │    ├─ repository/            # Database Access (JPA)
      │    ├─ entity/                # DB Tables
      │    ├─ dto/                   # Request/Response Models
-     │    ├─ ai/  (Phase 2)         # Spring AI Integration Layer
+     │    ├─ ai/                    # Spring AI Integration Layer
      │    └─ exception/             # (Future) Global Exception Handling
      └─ resources/
           └─ application.properties / application.yml
@@ -170,13 +219,14 @@ src/
 
 ---
 
-# 🤖 AI Endpoints (Phase 2 – Coming Soon)
+## 🤖 AI Endpoints (Phase 2 – Implemented)
 
-| Method | Endpoint                            | Description                      |
-| ------ | ----------------------------------- | -------------------------------- |
-| GET    | `/ai/explain-transactions/{userId}` | AI-generated transaction summary |
-| GET    | `/ai/smart-insights/{userId}`       | AI financial recommendations     |
-| POST   | `/ai/fraud-check`                   | AI suspicious activity detection |
+| Method | Endpoint                                   | Description                           |
+|------:|--------------------------------------------|---------------------------------------|
+| GET   | `/ai/explain-transactions/{userId}?n=5`    | AI-generated transaction explanation  |
+| GET   | `/ai/smart-insights/{userId}?n=5`           | AI-based financial advice             |
+| GET   | `/ai/check-fraud/{userId}?n=5`              | AI risk awareness analysis             |
+
 
 ---
 
@@ -210,7 +260,7 @@ spring.jpa.hibernate.ddl-auto=update
 
 ---
 
-### ⭐ Phase 2 – AI Integration (CURRENT)
+### ⭐ Phase 2 – AI Integration (COMPLETED)
 
 - Spring AI setup
 - Groq model integration
