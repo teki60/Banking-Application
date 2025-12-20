@@ -60,7 +60,7 @@ This project is built step-by-step to learn **enterprise backend**, **microservi
 
 ---
 
-# 🤖 ## 🤖 Phase 2 – AI Features (COMPLETED)
+# 🤖 Phase 2 – AI Features (COMPLETED)
 
 Your backend integrates **Spring AI + Groq LLM** to provide AI-driven financial guidance to users.
 
